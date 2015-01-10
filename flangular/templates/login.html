@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Flangular Login</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+
+    {% for message in messages %}
+    <div class="alert alert-danger" role="alert">
+      <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+
+  {% endif %}
+  {% endwith %}
+  <form class="form-signin" role="form" method="post" action="/login">
+    <h2 class="form-signin-heading">Flangular Login</h2>
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <input type="hidden" value="{{ next or '' }}" name="next">
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div> <!-- /container -->
+
+<script>
+  var hash = window.location.hash;
+  if (hash) {
+  $('input[name=next').attr('value', '/' + hash);
+  }
+</script>
+{% endblock %}

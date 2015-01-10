@@ -1,0 +1,4 @@
+Flask==0.10.1
+Flask-SQLAlchemy==0.16
+Flask-Restless==0.15.1
+passlib==1.6.2
