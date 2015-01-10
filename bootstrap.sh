@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if (( SHLVL == 2 ))
+then
+  echo "Usage: . $0"
+  exit
+fi
+
 virtualenv .
 . ./bin/activate
 
