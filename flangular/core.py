@@ -93,3 +93,9 @@ def index():
         return private_static('flangular.html')
     else:
         return redirect('/login')
+
+@app.after_request
+def add_header(response):
+    # prevent browser caching
+    response.headers['Cache-Control'] = 'public, max-age=0'
+    return response
